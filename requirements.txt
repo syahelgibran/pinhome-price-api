@@ -1,8 +1,8 @@
 Flask==3.0.0
-gunicorn==20.1.0
+gunicorn
 scikit-learn
 xgboost
 pandas
 numpy
 joblib
-setuptools 
+setuptools
