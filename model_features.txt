@@ -1,0 +1,118 @@
+Kamar_Tidur_Clean
+Kamar_Mandi_Clean
+Luas_Tanah_Clean
+Luas_Bangunan_Clean
+Lokasi_Clean_Kab. Agam
+Lokasi_Clean_Kab. Badung
+Lokasi_Clean_Kab. Bandung
+Lokasi_Clean_Kab. Bandung Barat
+Lokasi_Clean_Kab. Banggai
+Lokasi_Clean_Kab. Banjar
+Lokasi_Clean_Kab. Banjarnegara
+Lokasi_Clean_Kab. Bantul
+Lokasi_Clean_Kab. Banyuasin
+Lokasi_Clean_Kab. Banyumas
+Lokasi_Clean_Kab. Banyuwangi
+Lokasi_Clean_Kab. Bekasi
+Lokasi_Clean_Kab. Bogor
+Lokasi_Clean_Kab. Boyolali
+Lokasi_Clean_Kab. Cianjur
+Lokasi_Clean_Kab. Cilacap
+Lokasi_Clean_Kab. Cirebon
+Lokasi_Clean_Kab. Deli Serdang
+Lokasi_Clean_Kab. Garut
+Lokasi_Clean_Kab. Gianyar
+Lokasi_Clean_Kab. Gowa
+Lokasi_Clean_Kab. Gresik
+Lokasi_Clean_Kab. Gunung Kidul
+Lokasi_Clean_Kab. Indramayu
+Lokasi_Clean_Kab. Jember
+Lokasi_Clean_Kab. Jombang
+Lokasi_Clean_Kab. Kampar
+Lokasi_Clean_Kab. Karanganyar
+Lokasi_Clean_Kab. Karawang
+Lokasi_Clean_Kab. Kebumen
+Lokasi_Clean_Kab. Kediri
+Lokasi_Clean_Kab. Kendal
+Lokasi_Clean_Kab. Klaten
+Lokasi_Clean_Kab. Kulon Progo
+Lokasi_Clean_Kab. Kuningan
+Lokasi_Clean_Kab. Lamongan
+Lokasi_Clean_Kab. Lampung Selatan
+Lokasi_Clean_Kab. Lebak
+Lokasi_Clean_Kab. Lombok Barat
+Lokasi_Clean_Kab. Lombok Tengah
+Lokasi_Clean_Kab. Lumajang
+Lokasi_Clean_Kab. Madiun
+Lokasi_Clean_Kab. Magelang
+Lokasi_Clean_Kab. Majalengka
+Lokasi_Clean_Kab. Malang
+Lokasi_Clean_Kab. Melawi
+Lokasi_Clean_Kab. Mojokerto
+Lokasi_Clean_Kab. Muaro Jambi
+Lokasi_Clean_Kab. Pandeglang
+Lokasi_Clean_Kab. Pasuruan
+Lokasi_Clean_Kab. Pekalongan
+Lokasi_Clean_Kab. Pesisir Selatan
+Lokasi_Clean_Kab. Ponorogo
+Lokasi_Clean_Kab. Purwakarta
+Lokasi_Clean_Kab. Rejang Lebong
+Lokasi_Clean_Kab. Semarang
+Lokasi_Clean_Kab. Serang
+Lokasi_Clean_Kab. Sidoarjo
+Lokasi_Clean_Kab. Sleman
+Lokasi_Clean_Kab. Sragen
+Lokasi_Clean_Kab. Sukabumi
+Lokasi_Clean_Kab. Sukoharjo
+Lokasi_Clean_Kab. Sumedang
+Lokasi_Clean_Kab. Tangerang
+Lokasi_Clean_Kab. Tegal
+Lokasi_Clean_Kab. Temanggung
+Lokasi_Clean_Kab. Tulungagung
+Lokasi_Clean_Kab. Wonosobo
+Lokasi_Clean_Kota Bandar Lampung
+Lokasi_Clean_Kota Bandung
+Lokasi_Clean_Kota Banjar
+Lokasi_Clean_Kota Banjarbaru
+Lokasi_Clean_Kota Batam
+Lokasi_Clean_Kota Batu
+Lokasi_Clean_Kota Bekasi
+Lokasi_Clean_Kota Bengkulu
+Lokasi_Clean_Kota Bitung
+Lokasi_Clean_Kota Bogor
+Lokasi_Clean_Kota Cimahi
+Lokasi_Clean_Kota Cirebon
+Lokasi_Clean_Kota Denpasar
+Lokasi_Clean_Kota Depok
+Lokasi_Clean_Kota Jakarta Barat
+Lokasi_Clean_Kota Jakarta Pusat
+Lokasi_Clean_Kota Jakarta Selatan
+Lokasi_Clean_Kota Jakarta Timur
+Lokasi_Clean_Kota Jakarta Utara
+Lokasi_Clean_Kota Jambi
+Lokasi_Clean_Kota Kupang
+Lokasi_Clean_Kota Langsa
+Lokasi_Clean_Kota Madiun
+Lokasi_Clean_Kota Makassar
+Lokasi_Clean_Kota Malang
+Lokasi_Clean_Kota Medan
+Lokasi_Clean_Kota Mojokerto
+Lokasi_Clean_Kota Padang
+Lokasi_Clean_Kota Padang Panjang
+Lokasi_Clean_Kota Palangka Raya
+Lokasi_Clean_Kota Palembang
+Lokasi_Clean_Kota Pekalongan
+Lokasi_Clean_Kota Pekanbaru
+Lokasi_Clean_Kota Samarinda
+Lokasi_Clean_Kota Semarang
+Lokasi_Clean_Kota Serang
+Lokasi_Clean_Kota Sukabumi
+Lokasi_Clean_Kota Surabaya
+Lokasi_Clean_Kota Surakarta
+Lokasi_Clean_Kota Tangerang
+Lokasi_Clean_Kota Tangerang Selatan
+Lokasi_Clean_Kota Tasikmalaya
+Lokasi_Clean_Kota Yogyakarta
+Kondisi_Baru
+Kondisi_Second
+Kondisi_Tidak diketahui
