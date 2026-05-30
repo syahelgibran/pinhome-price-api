@@ -128,5 +128,27 @@ class PropertyValuationApiTests(unittest.TestCase):
         self.assertEqual(row, (4, 3, 200.0, 180.0, "Kota Bandung", "Baru"))
         conn.close()
 
+    def test_logs_endpoint(self):
+        # Retrieve logs via GET
+        response = self.client.get('/logs')
+        self.assertEqual(response.status_code, 200)
+        data = response.get_json()
+        self.assertEqual(data['status'], 'success')
+        self.assertIn('logs', data)
+        self.assertIsInstance(data['logs'], list)
+
+    def test_cors_headers(self):
+        # Ensure CORS headers are injected on metadata endpoint
+        res_meta = self.client.get('/metadata')
+        self.assertEqual(res_meta.headers.get('Access-Control-Allow-Origin'), '*')
+        
+        # Ensure CORS headers are injected on prediction endpoint
+        res_pred = self.client.post('/predict', json={})
+        self.assertEqual(res_pred.headers.get('Access-Control-Allow-Origin'), '*')
+        
+        # Ensure CORS headers are injected on logs endpoint
+        res_logs = self.client.get('/logs')
+        self.assertEqual(res_logs.headers.get('Access-Control-Allow-Origin'), '*')
+
 if __name__ == "__main__":
     unittest.main()

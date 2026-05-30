@@ -37,7 +37,15 @@ def init_db():
 
 init_db()
 
-# 3. Memuat Model XGBoost
+# 3. CORS Headers Hook (Tanpa library tambahan)
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+    return response
+
+# 4. Memuat Model XGBoost
 print("[INFO] Memuat model XGBoost...")
 model = joblib.load('xgb_model.joblib')
 print("[SUCCESS] Model berhasil dimuat!")
@@ -96,7 +104,7 @@ def log_prediction_to_db(data, predicted_price, latency_ms):
         print(f"[WARNING] Gagal menyimpan log prediksi ke DB: {e}")
 
 
-# 4. Endpoint Metadata untuk Frontend
+# 5. Endpoint Metadata untuk Frontend
 @app.route('/metadata', methods=['GET'])
 def get_metadata():
     """
@@ -110,7 +118,47 @@ def get_metadata():
     }), 200
 
 
-# 5. Endpoint Prediksi
+# 6. Endpoint Logs untuk Telemetri Real-time
+@app.route('/logs', methods=['GET'])
+def get_logs():
+    """
+    Mengembalikan 5 data log prediksi terakhir untuk visualisasi telemetri di frontend.
+    """
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+        cursor.execute('''
+            SELECT timestamp, kamar_tidur, kamar_mandi, luas_tanah, luas_bangunan, lokasi, kondisi, predicted_price, latency_ms 
+            FROM prediction_logs 
+            ORDER BY id DESC 
+            LIMIT 5
+        ''')
+        rows = cursor.fetchall()
+        conn.close()
+        
+        logs = []
+        for r in rows:
+            logs.append({
+                'timestamp': r[0],
+                'kamar_tidur': r[1],
+                'kamar_mandi': r[2],
+                'luas_tanah': r[3],
+                'luas_bangunan': r[4],
+                'lokasi': r[5],
+                'kondisi': r[6],
+                'predicted_price': r[7],
+                'latency_ms': r[8]
+            })
+            
+        return jsonify({
+            'status': 'success',
+            'logs': logs
+        }), 200
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 400
+
+
+# 7. Endpoint Prediksi
 @app.route('/predict', methods=['POST'])
 def predict():
     start_time = time.time()

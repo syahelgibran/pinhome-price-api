@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Valuation API Client</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-decor">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1 class="logo">🏠 Property<span>Valuation</span></h1>
+            <p class="subtitle">Predict real estate market prices in Indonesia using optimized XGBoost AI</p>
+        </header>
+
+        <!-- Sidebar-like config card -->
+        <div class="config-card">
+            <div class="config-header">
+                <h3>⚙️ API Configuration</h3>
+                <span id="api-status-badge" class="status-badge offline">Checking API...</span>
+            </div>
+            <div class="config-body">
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="api-mode" value="production" checked>
+                        <span>Production (Railway)</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="api-mode" value="local">
+                        <span>Lokal (Development)</span>
+                    </label>
+                </div>
+                <div class="input-group endpoint-group">
+                    <label for="custom-endpoint">Active API URL</label>
+                    <input type="text" id="custom-endpoint" value="https://web-production-605e4.up.railway.app">
+                </div>
+            </div>
+        </div>
+
+        <div class="main-layout">
+            <!-- Form Card -->
+            <section class="card form-card">
+                <h2>House Specifications</h2>
+                <form id="valuation-form">
+                    <div class="grid-2">
+                        <div class="input-group">
+                            <label for="kamar_tidur">🛏️ Bedrooms</label>
+                            <input type="number" id="kamar_tidur" value="3" min="0" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="kamar_mandi">🚿 Bathrooms</label>
+                            <input type="number" id="kamar_mandi" value="2" min="0" required>
+                        </div>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="input-group">
+                            <label for="luas_tanah">📐 Land Area (LT m²)</label>
+                            <input type="number" id="luas_tanah" value="120" min="1" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="luas_bangunan">🏢 Building Area (LB m²)</label>
+                            <input type="number" id="luas_bangunan" value="100" min="1" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="lokasi">📍 Location (Regency/City)</label>
+                        <div class="select-wrapper">
+                            <select id="lokasi" required disabled>
+                                <option value="" disabled selected>Loading locations...</option>
+                            </select>
+                            <div class="spinner-small" id="lokasi-spinner"></div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="kondisi">✨ Property Condition</label>
+                        <div class="select-wrapper">
+                            <select id="kondisi" required disabled>
+                                <option value="" disabled selected>Loading conditions...</option>
+                            </select>
+                            <div class="spinner-small" id="kondisi-spinner"></div>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="btn-submit" class="btn btn-primary">
+                        <span>Estimate Market Price</span>
+                        <div class="spinner-btn" id="btn-spinner"></div>
+                    </button>
+                </form>
+            </section>
+
+            <!-- Display Results -->
+            <section class="card result-card" id="result-card">
+                <h2>Price Valuation Estimate</h2>
+                <div class="result-placeholder" id="result-placeholder">
+                    <div class="placeholder-icon">🔍</div>
+                    <p>Enter specifications and click "Estimate Market Price" to run the machine learning model.</p>
+                </div>
+                <div class="result-display hidden" id="result-display">
+                    <span class="result-label">ESTIMATED PRICE</span>
+                    <h2 class="price-output" id="price-output">Rp 0</h2>
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <span class="metric-label">Server Latency</span>
+                            <span class="metric-value" id="latency-val">- ms</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Model Engine</span>
+                            <span class="metric-value">XGBoost Regressor</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Telemetry Logs section -->
+        <section class="card telemetry-card">
+            <div class="telemetry-header">
+                <h2>📊 Live Production Telemetry Logs</h2>
+                <span class="pulse-indicator"></span>
+            </div>
+            <p class="telemetry-sub">Real-time requests logging dynamically from the backend SQLite database</p>
+            <div class="table-responsive">
+                <table class="telemetry-table">
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>Bedrooms</th>
+                            <th>Bathrooms</th>
+                            <th>Land / Bldg</th>
+                            <th>Location</th>
+                            <th>Condition</th>
+                            <th>Valuation Estimate</th>
+                            <th>Latency</th>
+                        </tr>
+                    </thead>
+                    <tbody id="telemetry-tbody">
+                        <tr class="table-loading">
+                            <td colspan="8">Fetching latest logs...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
