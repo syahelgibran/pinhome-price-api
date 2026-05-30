@@ -1,6 +1,6 @@
 // Global Constants for endpoints
 const ENDPOINTS = {
-    production: "home-price-prediction.up.railway.app",
+    production: "https://home-price-prediction.up.railway.app", // Updated to your actual Railway URL!
     local: "http://localhost:5000"
 };
 
@@ -21,6 +21,15 @@ function formatRupiah(amount) {
     return "Rp " + new Intl.NumberFormat('id-ID', { maximumFractionDigits: 0 }).format(amount);
 }
 
+// URL Sanitization Helper (ensures protocol is prepended so it is not treated as a relative path)
+function sanitizeUrl(url) {
+    let cleanUrl = url.trim();
+    if (!cleanUrl.startsWith("http://") && !cleanUrl.startsWith("https://")) {
+        cleanUrl = "https://" + cleanUrl;
+    }
+    return cleanUrl;
+}
+
 // 1. Initial Load & Setup
 document.addEventListener("DOMContentLoaded", () => {
     setupEndpoints();
@@ -32,10 +41,13 @@ function setupEndpoints() {
     const radios = document.querySelectorAll('input[name="api-mode"]');
     const endpointInput = document.getElementById("custom-endpoint");
 
+    // Initialize display with default active URL
+    endpointInput.value = ACTIVE_URL;
+
     radios.forEach(radio => {
         radio.addEventListener("change", (e) => {
             const mode = e.target.value;
-            ACTIVE_URL = ENDPOINTS[mode];
+            ACTIVE_URL = sanitizeUrl(ENDPOINTS[mode]);
             endpointInput.value = ACTIVE_URL;
             
             // Re-initialize with new endpoint URL
@@ -45,7 +57,8 @@ function setupEndpoints() {
 
     // Handle manual text changes in endpoint URL input
     endpointInput.addEventListener("change", (e) => {
-        ACTIVE_URL = e.target.value.trim();
+        ACTIVE_URL = sanitizeUrl(e.target.value);
+        endpointInput.value = ACTIVE_URL; // Update input field to show sanitized URL
         initializeData();
     });
 }
